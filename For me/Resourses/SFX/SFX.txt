@@ -1,5 +1,0 @@
-Path=%SystemRoot%\Windows_10_Tweak
-Silent=1
-Overwrite=1
-Setup=Setup.cmd
-Shortcut=D, "%SystemRoot%\System32\wscript.exe //B //Nologo %SystemRoot%\Refresh.vbs", , "Restart Explorer", "Refresh", Refresh.ico
