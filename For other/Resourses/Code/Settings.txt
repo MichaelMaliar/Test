@@ -1,0 +1,13 @@
+GitHub: https://github.com/MichaelMaliar/Windows-10-Tweak.git
+
+Рекомендация по ручной настройке:
+
+Параметры\Поиск\Разрешения и журнал:
+	Выключить всё
+
+
+Manual configuration recommendation:
+
+Settings\Search\Permissions & History
+	Disable all
+
