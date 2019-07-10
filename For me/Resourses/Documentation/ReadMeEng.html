@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Windows 10 Tweak</title>
+	<link rel="shortcut icon" href="https://i.imgur.com/hNXyp03.png" type="image/png">
+	<style>
+		#body {
+    		padding: 0px;
+			margin: 0px;
+			background: #f8f8ff;
+			font-style: italic;
+			font-family: 'Consolas';
+		}
+
+		.Windows_10_Tweak  {
+			width: 100%;
+			height: 2.5em; 
+    		line-height: 2.5em;
+			position: fixed;
+			color: white;
+			font-size: 48px;
+			font-style: normal;
+			background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+		}
+
+		.logo {
+			opacity: 0.1;	
+			margin-left: 5px;
+		}
+
+		.CopyRight { 
+			margin-left: 5px;
+			font-size: 17px;
+			font-style: normal;
+ 		}
+
+		.TextTitle_1 {
+			font-weight: bold;
+			color: red;
+			font-size: 24px;
+		}
+
+		.TextTitle_2 {
+			font-weight: bold;
+			color: blue;
+			font-size: 24px;
+		}
+
+		.TextTitle_3 {
+			font-weight: bold;
+			color: rgb(56, 56, 82);
+			font-size: 24px;
+		}
+
+		.TextTitle_4 {
+			font-weight: bold;
+			color: rgb(84, 114, 196);
+			font-size: 24px;
+		}
+
+		.table {
+			border: 4px solid black;
+			margin: auto;
+			color: black;
+			font-size: 20px;
+			text-align: center;
+			font-style: normal;
+		}
+
+		.table td {
+			border: 1px solid black;
+			width: 400px;
+		}	
+
+	</style>
+</head>
+<body id="body">
+	<div>
+
+		<div class="Windows_10_Tweak">
+			<span class="logo">Windows 10 Tweak</span>
+		</div><br><br><br><br><br><br>
+
+		<p class="CopyRight">
+			Tweak made by Michael Maliar. <br> GitHub: <a href="https://github.com/MichaelMaliar/Windows-10-Tweak.git" target="_blank">https://github.com/MichaelMaliar/Windows-10-Tweak.git</a>
+		</p><br>
+
+		<p style="margin-left: 5px;">
+			<span class="TextTitle_1">T</span>he tweak was created to quickly configure Windows. It is designed to be used on versions of Windows 1903 or 1809 (but a few settings will not be changed).<br>
+			You are solely responsible for using the software on stripped-down Windows builds or older versions of the operating system.<br>
+			If you have any questions — write on <a href="mailto:Windows10Tweak@gmail.com" style="font-style: normal;">e-mail</a>.
+		</p>
+
+		<p style="margin-left: 5px;">
+			<span class="TextTitle_2">T</span>he tweak is adapted for Windows in Russian, Ukrainian, Belarusian, Kazakh and Moldovan. On Windows with another language tweak will be in English.<br>
+			Before you start, you must disable the "Tamper Protection" function in Windows Defender. It is on the way: «Settings\Update & Security\Windows Security\Virus & threat protection\Virus & threat protection settings\Manage settings\Tamper Protection: off»<br>
+			It can be run by double-clicking on the exe file and from the folder where it was unpacked by clicking on the Setup file.cmd, but all files should be next to it in the same directory!
+		</p>
+
+		<p style="margin-left: 5px;">
+			<span class="TextTitle_3">I</span>f you are going to change something, follow the instructions:<br>
+			<div style="margin-left: 70px;">
+				<!-- Первый пункт инструкции -->
+				<span style="margin-left: -40px;">1) SFX comments:</span><br>
+				<span style="color: red;">Path=%SystemRoot%\Windows_10_Tweak</span> — Unpack to Windows\Windows_10_Tweak folder.<br>
+				<span style="color: red;">SavePath</span> — Allows you to change the suggested path to the desired one only once, rather than re-enter it each time.<br>
+				<span style="color: red;">Silent=1</span> — Quiet unpacking.<br>
+				<span style="color: red;">Overwrite=1</span> — Overwrite files if they already exist.<br>
+				<span style="color: red;">Setup=Setup.cmd</span> — Running the tweak.<br>
+				<span style="color: red;">Shortcut=D, "%SystemRoot%\System32\wscript.exe //B //Nologo %systemroot%\Refresh.vbs", , "Restart Explorer", "Refresh", Refresh.ico</span> — Creates a shortcut to reboot the Explorer shell.<span><br><br>
+				<!-- Второй пункт инструкции -->
+				<span style="margin-left: -40px;">2) SFX module:</span><br>
+				IMPORTANT! When creating an SFX archive, select the 64-bit SFX module — <a href="https://i.imgur.com/0RW1ilC.jpg" target="_blank">Default64.SFX</a>.<br><br>
+				<!-- Третий пункт инструкции -->
+				<span style="margin-left: -40px;">3) How to create SFX archive:</span><br><br>
+				<p style="margin-left: -75px;"><iframe style="margin: 0 auto; display: block;" width="640" height="360" src="https://radikal.ru/vf/9UALcxEmsh2" frameborder="0" scrolling="no" allowfullscreen></iframe></p>
+			</div>
+		</p><br>
+		<hr style="width: 50%;">
+
+		<!-- Что делают файлы -->
+		<p style="margin-left: 5px;">
+		<span class="TextTitle_4">T</span>he TamperProtection.vbs and done.vbs files are used for notifications. Utility <a href=" https://www.microsoft.com/en-us/download/details.aspx?id=23510" target="_blank">
+		SubInACL.exe</a> need to manage permissions, Utility <a href="https://www.microsoft.com/en-us/download/details.aspx?id=55319" target="_blank">LGPO.exe</a>
+		needed to manage Local group policies (gpedit.msc в Windows 10 Pro). The GPO folder contains group policies. File Blank.ico is used to remove the arrows from the labels,
+		Refresh.ico is a Refresh shortcut icon on the desktop. Delete_Intel_folder.xml contains a task to delete the Intel folder for the task scheduler.
+		Settings.txt contains recommendations for manual configuration. <a href="https://www.sordum.org/9416/powerrun-v1-3-run-with-highest-privileges/" target="_blank">PowerRun.exe</a>
+		is needed to run processes with elevated privileges. Script Refresh.vbs silently updates the Explorer and resets the icon cache.
+		</p>
+
+		<!-- Изменения, превносимые твиком -->
+		<p style="text-align: center; font-size: 36px; font-style: normal;">Changes introduced by the tweak:</p>
+		<table class="table">
+			<tr>
+				<td style="color: blue; font-size: 34px">Windows 10 Tweak.reg</td>
+				<td style="color: blue; font-size: 34px">Setup.cmd</td>
+				<td style="color: blue; font-size: 34px">Tweak.ps1</td>
+			</tr>
+				
+			<tr>
+				<td>Turn off the display of recently used files in the quick access toolbar</td>
+				<td>Getting full access to the three services registry keys (DPS, WdiSystemHost, WdiServiceHost)</td>
+				<td>Delete standard tile Windows shit-applications (см. код)</td>
+			</tr>
+
+			<tr>
+				<td>Turn off the display of frequently used files in the quick access toolbar</td>
+				<td>Import to the desktop a list of settings to be manually disabled</td>
+				<td>Disabling but not deleting recovery points</td>
+			</tr>
+			
+			<tr>
+				<td>Show encrypted or compressed NTFS files in color</td>
+				<td>If the Russian version of Windows includes Wi-Fi and Bluetooth among the Internet adapters, by default they will be called "Wireless network" and "Bluetooth Network connection". The tweak will rename them "Wireless" and "Bluetooth". It is used only in Russian-speaking Windows</td>
+				<td>Disable "Store my active history on this device" and "Store my active history to Microsoft" in "Settings\Privacy\Activity history»</td>
+			</tr>
+			
+			<tr>
+				<td>Print the full path in the title bar</td>
+				<td>If you have Windows 10 Home, the local group policy Editor will be restored (gpedit.msc)</td>
+				<td>Disable "Show recently added apps" in the start menu (Settings\Personalization\Start)</td>
+			</tr>
+			
+			<tr>
+				<td>Opening Explorer in "My computer" instead of "Quick access"</td>
+				<td>Importing local group policies</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Toggles the display of file extensions</td>
+				<td>Allow local Powershell scripts to run on the PC</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Toggles the display of hidden files</td>
+				<td>Killing Windows Defender and child services with the PowerRun utility.exe that launches the process on behalf of the SYSTEM</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Disabling the "Run programs and unsafe files" warning»</td>
+				<td>Create an <a href="https://docs.microsoft.com/ru-ru/windows/desktop/Wua_Sdk/opt-in-to-microsoft-update" target="_blank">«Update.vbs»</a> file that includes updates for other Microsoft products. The script will be deleted after execution.</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Remove the limit from the length of the conductor paths (256 characters)</td>
+				<td>If you have Intel CPU, it will create task delete folder C:\Intel with logs, each log in. Why wasn't it placed in Temp?</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Enable run as another user</td>
+				<td>Adaptation of point PHP to create menu for other languages</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>In terminals, instead of the old underline cursor, there will be a vertical bar, the font Consolas 16</td>
+				<td>Remove Intel folder</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Disable UAC notifications (for administrators)</td>
+				<td>Delete the temporary folder PerfLogs</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Turn off SmartScreen completely</td>
+				<td>Restore the ability to boot in safe mode via F8</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Полное отключение Windows Defender и всех связанных служб</td>
+				<td>Disabling Windows Defender and all of its related services</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Ban on access to the camera, tile applications that do not remove the tweak</td>
+				<td>Remove unnecessary shortcuts from the "Send menu"</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Ban on access to the microphone, tile applications that do not remove the tweak</td>
+				<td>Disable hibernation</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Prevent apps from using voice activation when your device is locked</td>
+				<td>Disable scheduled defragmentation</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Prevent apps from accessing notifications</td>
+				<td>Obtaining the rights on the folder tile Windows shit-applications</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Deny access to account information</td>
+				<td>Rename the file associated with telemetry</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Deny access to contacts</td>
+				<td>Disable the automatic creation of recovery points task</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Prevent apps from accessing your calendar</td>
+				<td>Disabling Nvidia telemetry</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Prevent apps from making phone calls</td>
+				<td>Stop and delete the OneDrive update task in the scheduler</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Prevent applications from accessing the call log</td>
+				<td>Disable OneDrive startup</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Prohibition of applications for access to e-mail</td>
+				<td>Disable data collection using the task scheduler (Microsoft)</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Prevent applications from accessing tasks</td>
+				<td>Prevent cortana from accessing the network by adding a Firewall rule (if it already exists, the rule will be overwritten)</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Prevent messaging applications</td>
+				<td>Removing spyware and data already collected</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Prohibition of applications for access to radio</td>
+				<td>Disabling spyware and unsafe services</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Prohibition of communication with other devices (unrelated)</td>
+				<td>Disable reopening programs after reboot (Settings\Accounts\login Options)</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Turn off background apps</td>
+				<td>Fix for NumLock sticking</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Deny access to diagnostic data</td>
+				<td>Paging file configuration</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Prevent applications from accessing the document library</td>
+				<td>Include Windows components: DirectPlay (To support older games. For example, S. T. A. L. K. E. R.), .NET Framework 3.5 (Needed for programs), Windows SandBox ( in Windows 10 Pro) </td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Set permissions to access the image library, among tile applications that are not removes the tweak: the Microsoft Edge: disable Windows Search: disable (the search is not affected), the game Menu: to allow the Outline on the piece of the screen: allow</td>
+				<td>Disable unnecessary Windows components: Internet Explorer 11, media Components. Disables useless "Windows Media Player"</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Set permissions for access to the videos library, among tile applications that are not removes the tweak Menu of the game: allow</td>
+				<td>Cleaning up after yourself</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Prevent applications from accessing the file system</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Setting the highest sensitivity of the touch panel</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Show notification quick Bluetooth</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Disable device log</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Safe search: disabled</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Turn off automatic map updates</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Disable Microsoft Edge web sites</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Enable automatic video processing for improvement</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Prevent low-resolution video playback</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>While watching videos while powered by battery and optimize for video quality</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Streaming video in HDR mode</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>When running Windows HD Color content when running on battery: Optimal image quality</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Disable "Get tips, tricks, and recommendations when using Windows»</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Turn off "Show Windows welcome screen after updates and sometimes at login to report new features and offers»</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Turn on night light from 23:00 to 7:00 and intensity 25% (for Windows 1903)</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Disable "show recommendations on the timeline Periodically"</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Always require the PIN code to link to project on this computer</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>To enable the PRINT SCREEN key to start the create portion of the screen</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>The inclusion of the log of the clipboard (Win + V)</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Focus attention: 1) "When duplicating my screen": only alarms and do not display notifications in notification center when focus attention is automatically turned on. 2) "When I play the game": only alarms and do not display notification in notification center when focus is automatically turned on. 3) "When I use the app in full screen mode": only priority and do not display notifications in notification center when focus is automatically turned on.</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Enable dark theme</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Disable "Show People on the taskbar"</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Search: "Show search icon"</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Enable "Use Peek to preview the desktop when you move your mouse to the Show desktop button at the and of the taskbar"</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Disable "Show suggenstions occasionally in Start"</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Disable "Показывать последние открытые элементы в списках переходов в меню "Пуск" или на панели задач"</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Отключение "Вести запись в фоновом режиме, пока идёт игра"</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Sound quality when recording DVR 192 KB/s</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Enable "Record sound when recording a game"</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>High quality DVR recording</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>60 FPS when recording</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>To display the mouse cursor in the recording</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Turn off update notifications</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Turn off automatic download and installation of Microsoft Store software updates</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Disable the annoying security notice from the notification center</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Disabling the Internet bandwidth limit</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Disable auto-start devices</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Prevent regular users from changing their BitLocker PIN or password</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Allow secure boot to verify integrity</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Enable the use of enhanced PIN codes when starting the computer (not just numbers)</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Minimum pin length for Bitlocker 8 characters</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Encryption method for operating system disks — XTS-AES with 256-bit encryption key</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>The method of encryption for fixed disks — XTS-AES-c 256-bit key encryption</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Encryption method for removable storage — AES-CBC c a 128-bit key encryption (the default)</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Disable all special features: Color filters, Narrator, Sticky keys, Sound switching, input Filtering, Show a warning when activated special features, Beep when activated special features</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Turn off Windows startup delay and programs</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Включение «Разрешить Windows исправлять размытость в приложениях»</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Ability to install programs from anywhere</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Enabling developer mode</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Display the day of the week next to the clock on the taskbar</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Disable recovery points. The created restore points are not deleted, only their automatic creation is disabled.</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Enable extra visual effects in performance options of the system: "Saving thumbnails in the task pane, Display the shadow under the mouse pointer"</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Disable hibernation</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>To disable remote access: disable connection to the remote helper, Off remote desktop</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Disabling the startup of the Microsoft Edge</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Disable telemetry completely (look code line 710)</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Disable all Windows synchronization types</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Disabling cortana</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Disable unnecessary services and removed.</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Отключение оптимизации доставки.</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Удаление стрелок с ярлыков</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Отображать буквы дисков перед их метками</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Отключение префикса «Ярлык для...» / постфикса «— ярлык»</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Включение строки состояния и переноса по словам в блокноте. Также это исправит косяк в старых версиях Windows 10, когда эти не две функции не работали одновременно. </td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Исправление залипания NumLock</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Добавление файлов (HTML, CSS, JavaScript, REG, PHP, CMD, PS1, VBS) в меню создать</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Нормальный цвет всплывающей подсказки</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Удаление бесполезных файлов из меню создать (Точечный рисунок BMP, Контакт, Документ в формате RTF, Сжатая ZIP-папка)</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Ускорение появления пунктов контекстного меню</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Ускорение появления превью на панели задач</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Удаление "Изменить с помощью Paint 3D"</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Удаление "3D Print" из контекстного меню</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Удаление "Настройки графики Intel" из контекстного меню рабочего стола</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Удаление папки "Объёмные объекты" из бокового меню проводника</td>
+				<td></td>
+				<td></td>
+			</tr>		
+		</table><br><br><br>
+
+		
+	</div>
+</body>
+</html>
